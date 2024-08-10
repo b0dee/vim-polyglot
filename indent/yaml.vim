@@ -152,7 +152,7 @@ function GetYAMLIndent(lnum)
                 \                             '\v)%(\s+|\s*%(\#.*)?$))*'
         " Mapping with: value
         "     that is multiline scalar
-        return previndent+shiftwidth()
+        return previndent
     endif
     return previndent
 endfunction
