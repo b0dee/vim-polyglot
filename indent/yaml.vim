@@ -151,7 +151,7 @@ function GetYAMLIndent(lnum)
                 \                              '\v|'.s:block_scalar_header.
                 \                             '\v)%(\s+|\s*%(\#.*)?$))*'
         " Mapping with: value
-        "     that is multiline scalar
+        " Newline indent matches above
         return previndent
     endif
     return previndent
