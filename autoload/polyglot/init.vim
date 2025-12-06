@@ -2718,16 +2718,19 @@ if !has_key(g:polyglot_is_disabled, 'sensible')
   " Reload unchanged files automatically.
   set autoread
 
-  " This is needed to avoid swapfile warning when auto-reloading
-  set shortmess+=A
-
   " Avoids swapfiles in current directory
   if &directory =~# '^\.,'
     if !empty($HOME)
       if has('win32')
-        let &directory = expand('$HOME/vimfiles') . '//,' . &directory
+        if !isdirectory(expand('$HOME/vimfiles/swap'))
+          call mkdir(expand('$HOME/vimfiles/swap'))
+        endif
+        let &directory = expand('$HOME/vimfiles/swap') . '//,' . &directory
       else
-        let &directory = expand('$HOME/.vim') . '//,' . &directory
+        if !isdirectory(expand('$HOME/.vim/swap'))
+          call mkdir(expand('$HOME/.vim/swap'))
+        endif
+        let &directory = expand('$HOME/.vim/swap') . '//,' . &directory
       endif
     endif
     if !empty($XDG_DATA_HOME)
